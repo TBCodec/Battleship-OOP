@@ -1,4 +1,5 @@
 public class Board {
+    
     private Square[][] ocean;
     public Board(int length){
         ocean = new Square[length][length];

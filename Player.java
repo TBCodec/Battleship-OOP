@@ -1,38 +1,37 @@
+import java.util.LinkedList;
+import java.util.List;
+
 public class Player {
     private String name;
-    //public int ship = 2;
-    //public int shut = 0;
-    //public boolean RealPlayer;
-    
-    private Board Board;
-    //private String[][] PlayerMap;
-    //private String[][] BattleMap;
-
+    public void setName(String name){
+        this.name = name;
+    }
     public String getName(){
         return name;
     }
+    //Tábla osztály, ahol a játékos térképe található
+    private Board board;
     public Board getBoard(){
-        return Board;
+        return board;
     }
-    public void setBoard(int length){
+    public void setBoard(Board tabla){
+        board = tabla;
+    }
+    /*public void setBoardLength(int length){
         Board = new Board(length);
+    }*/
+
+    private List<Ship> ships;
+
+    //boolean IsAlive amely ellenőrzi hogy nincs-e az összes hajód kilőve (true vagy false értéket ad vissza)
+    public boolean IsAlive(){
+        boolean IsAlive = true;
+        if (ships.isEmpty()) IsAlive = false;
+        return IsAlive;
     }
-    public void CreatPlayer(int playerNumber){
-        if(playerNumber >= 2 )
-        {   Battleship battleship = new Battleship();
-            battleship.setPlayers(new Player[playerNumber]);
-            //Battleship.players = new Player[playerNumber];
-            for (int i = 0; i < playerNumber; i++){
-                battleship.getPlayers()[i] = new Player();
-                //Battleship.players[i] = new Player();
-                //Itt álítjuk be, hogy a játékosnál elmentett board milyen hosszú legyen
-                battleship.getPlayers()[i].setBoard(5);
-;                //Battleship.players[i].setBoard(5);
 
 
-            }
-        } 
-    }
+    
 
 }
 
@@ -40,5 +39,5 @@ public class Player {
 //teljesen új függvény kell ami a lövést szabályozza
 
 //List<Ship>
-//boolean IsAlive amely ellenőrzi hogy nincs-e az összes hajód kilőve (true vagy false értéket ad vissza)
+
 

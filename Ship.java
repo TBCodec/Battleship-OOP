@@ -1,4 +1,4 @@
-public class Ship extends Player{
+public class Ship extends ShipType{
     private int shipNumber = 2;
     public int getShipNumber(){
         return shipNumber;
