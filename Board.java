@@ -1,10 +1,10 @@
 public class Board {
-    
-    private Square[][] ocean;
+
+    private String[][] ocean;
     public Board(int length){
-        ocean = new Square[length][length];
+        ocean = new String[length][length];
     }
-    public Square[][] getOcean(){
+    public String[][] getOcean(){
         return ocean;
     }
 }

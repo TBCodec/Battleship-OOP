@@ -22,7 +22,7 @@ public class Display{
                     );
                 //Hajók lerakása
                 // Player[] pirate = battleship.getPlayers();
-
+                PrintPlayersBoard(battleship.getPlayers());
                 int[] c = InstallShipsScreen(battleship.getPlayers()[0]);
                 System.out.println(c[0]+ " és " +c[1]);
                 break;
@@ -75,7 +75,8 @@ public class Display{
                 System.out.print(" "+(char)(65+abc)+" ");
                 for (int num = 0; num < extracted(players, i).length; num++){
                     Square s = new Square();
-                    players[i].getBoard().getOcean()[abc][num] = s.setValue("display[0]");
+                    players[i].getBoard().getOcean()[abc][num] = s.setValue(display[0]);
+                    System.out.print(players[i].getBoard().getOcean()[abc][num]);
                     //display[0];
                     /*
                     if(isBattleMap){
@@ -90,7 +91,7 @@ public class Display{
             System.out.println();
         }
     }
-    private Square[][] extracted(Player[] players, int i) {
+    private String[][] extracted(Player[] players, int i) {
         return players[i].getBoard().getOcean();
     }
 }
