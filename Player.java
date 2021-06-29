@@ -18,14 +18,27 @@ public class Player {
         Board = new Board(length);
     }
     public void CreatPlayer(int playerNumber){
-        if(playerNumber >= 2 ){
-            Battleship.players = new Player[playerNumber];
+        if(playerNumber >= 2 )
+        {   Battleship battleship = new Battleship();
+            battleship.setPlayers(new Player[playerNumber]);
+            //Battleship.players = new Player[playerNumber];
             for (int i = 0; i < playerNumber; i++){
-                Battleship.players[i] = new Player();
+                battleship.getPlayers()[i] = new Player();
+                //Battleship.players[i] = new Player();
                 //Itt álítjuk be, hogy a játékosnál elmentett board milyen hosszú legyen
-                Battleship.players[i].setBoard(5);
+                battleship.getPlayers()[i].setBoard(5);
+;                //Battleship.players[i].setBoard(5);
+
+
             }
         } 
     }
 
 }
+
+
+//teljesen új függvény kell ami a lövést szabályozza
+
+//List<Ship>
+//boolean IsAlive amely ellenőrzi hogy nincs-e az összes hajód kilőve (true vagy false értéket ad vissza)
+

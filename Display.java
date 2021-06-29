@@ -14,7 +14,10 @@ public class Display{
                 int number = HowMachPlayerScreen();
                 player.CreatPlayer(number);
                 //Hajók lerakása
-                int[] c = InstallShipsScreen(Battleship.players[0]);
+                Battleship battleship = new Battleship();
+               // Player[] pirate = battleship.getPlayers();
+
+                int[] c = InstallShipsScreen(battleship.getPlayers()[2]);
                 //System.out.println(c[0]+ " és " +c[1]);
                 break;
             case 2:
@@ -51,3 +54,4 @@ public class Display{
         return playerNumber;
     }
 }
+//játék kimenetelének a megjelenítése

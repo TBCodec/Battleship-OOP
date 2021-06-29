@@ -4,3 +4,7 @@ public class Ship extends Player{
         return shipNumber;
     }
 }
+
+//ShipType-ból válassza ki a típust és a hosszt-t
+
+//List<Square>-t létre kell hozni

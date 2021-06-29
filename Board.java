@@ -7,3 +7,5 @@ public class Board {
         return ocean;
     }
 }
+//isPlacementOkay függvény ami azonosítja hogy lehetséges-e lerakni a hajót
+

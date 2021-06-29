@@ -6,5 +6,9 @@ public class ShipType {
         BATTLESHIP,
         SUBMARINE,
         DESTROYER
+
+        //minden ShipType-nak külön van a hosssza
+
+
       }
 }

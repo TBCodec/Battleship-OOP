@@ -1,8 +1,16 @@
 
 
 public class Battleship {
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+    }
+
     //public static int playerNumber;
-    public static Player[] players;
+    private Player[] players;
      public static void main(String[] args) {
         //Display.StartScreen();
 
