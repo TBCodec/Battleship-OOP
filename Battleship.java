@@ -30,7 +30,7 @@ public class Battleship {
                 //Itt álítjuk be, hogy a játékosnál elmentett board milyen hosszú legyen
                 Board tabla = new Board(mapLength);
                 getPlayers()[i].setBoard(tabla);
-                getPlayers()[i].setName("Player "+i);
+                getPlayers()[i].setName("Player "+(i+1));
 
             }
         } 
