@@ -3,6 +3,7 @@ public class Square {
 
     public String setValue(String value){
         this.value = value;
+
         return value;
     }
 //kétdimenziós array (x/y értékekkel)
