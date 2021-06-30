@@ -7,5 +7,4 @@ public class Game {
     //különböző játékmódok implementálása (easy, medium, hard)
 
 
-    
 }

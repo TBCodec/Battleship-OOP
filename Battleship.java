@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Battleship {
     // Játékosok tömb változóban + get és set
     private Player[] players;
@@ -30,8 +33,12 @@ public class Battleship {
                 //Itt álítjuk be, hogy a játékosnál elmentett board milyen hosszú legyen
                 Board tabla = new Board(mapLength);
                 getPlayers()[i].setBoard(tabla);
+                //Játékos elnevezése
                 getPlayers()[i].setName("Player "+(i+1));
-
+                //Hajók csinálása
+                List<Ship> ships = new ArrayList<Ship>();
+                ships.add(new Ship());
+                getPlayers()[i].setShip(ships);
             }
         } 
     }

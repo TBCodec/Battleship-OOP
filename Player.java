@@ -22,7 +22,12 @@ public class Player {
     }*/
 
     private List<Ship> ships;
-
+    public List<Ship> getShips(){
+        return ships;
+    }
+    public void setShip(List<Ship> ships){
+        this.ships = ships;
+    }
     //boolean IsAlive amely ellenőrzi hogy nincs-e az összes hajód kilőve (true vagy false értéket ad vissza)
     public boolean IsAlive(){
         boolean IsAlive = true;
