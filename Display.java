@@ -16,10 +16,14 @@ public class Display{
         switch(input.addNumber()) {
             case 1:
                 //Játékosok létrehozása! Hányan játszotok? Milyen széles legyen a pálya?
+                int howmuchlength = HowMach("Mekkora legyen a pálya? (Minimum 5-ös");
+                while(howmuchlength <5) {
+                    howmuchlength =HowMach("Mekkora legyen a pálya? (Minimum 5-ös");
+                }
                 battleship.CreatPlayer(
-                    HowMach("Hányan szertnétek játszani? Minimum 2 játékos kell!"),
-                    HowMach("Mekkora legyen a pálya?")
+                    HowMach("Hányan szertnétek játszani? Minimum 2 játékos kell!"), howmuchlength
                     );
+
                 //Hajók lerakása
                 // Player[] pirate = battleship.getPlayers();
                 PrintPlayersBoard(battleship.getPlayers());
@@ -50,12 +54,18 @@ public class Display{
     //Toplista kirajtolása
     public void ToplistScreen(){
     }
-    //itt kérdezi meg, hogy mennyi legyen a játékosok száma, illetve, hogy a térkép mekkora legyen
+    //itt kérdezi meg, hogy mennyi legyen a játékosok száma, illetve, hogy a térkép mekkora legyen (min
     public int HowMach(String question){
+        int maplengthquestion =0;
+
+
+
+
         int playerNumber = 0;
         while (playerNumber < 2){
             System.out.println(question);
             playerNumber = input.addNumber();
+
         }
         return playerNumber;
     }
