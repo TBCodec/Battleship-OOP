@@ -18,7 +18,7 @@ public class Display{
                 StartGame();
                 break;
             case 2:
-                ToplistScreen();
+                ToplistScreen(battleship.getPlayers());
                 break;
             case 3:
                 System.exit(0);
@@ -120,6 +120,8 @@ public class Display{
     }
     //Toplista kirajtolása
     public void ToplistScreen(Player[] players){
+        PrintPlayersBoard(players, "ocean");
+        PrintPlayersBoard(players, "");
         boolean haveWinner = true;
         Player winner = players[0];
         for (int i = 0; i <= players.length-1; i++){
