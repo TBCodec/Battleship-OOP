@@ -1,6 +1,6 @@
 import java.util.InputMismatchException;
 
-public class Display{
+public class Display extends Player{
 
     /* 0 (üres terület), X (hajo), H (találat), S (elsüllyedt), M (mellé) */
     private static String[] display = {"0 ", "X ", "H ", "S ", "M "};
@@ -40,11 +40,10 @@ public class Display{
     //Új játék indítása képernyő
     public void StartGame(){
         //Játékosok létrehozása! Hányan játszotok? Milyen széles legyen a pálya?
-        battleship.CreatPlayer(
+        super.CreatPlayer(
             HowMach("Hányan szertnétek játszani? Minimum 2 játékos kell!", 2),
             HowMach("Mekkora legyen a pálya? (Minimum 5-ös)", 5)
             );
-
         //Rajzolunk
         PrintPlayersBoard(battleship.getPlayers(), "ocean");
         //Hajók lerakása az összes játékos lerakja a hajóit
@@ -87,7 +86,7 @@ public class Display{
                 PrintPlayersBoard(players, "Kristóf :D (shut)");
                 int abc, num;
                 do {
-                    System.out.print(players[me].getName()+": Live?:"+ players[me].IsAlive()+" Ship size: "+players[me].getShips().size()+" Vége a játéknak?"+endBattleCheck(players)+"\n");
+                    //System.out.print(players[me].getName()+": Live?:"+ players[me].IsAlive()+" Ship size: "+players[me].getShips().size()+" Vége a játéknak?"+endBattleCheck(players)+"\n");
                     num = HowMach("Válassz 1 és "+ NumMaps + " koordináták közül: ", 1)-1;
                     System.out.print("Válassz A és "+ (char)(64+NumMaps) +" koordináták közül: ");
                     abc = input.addCharacter()-1;
@@ -95,9 +94,9 @@ public class Display{
                     if ((abc >= 0 && abc < NumMaps) && (num >= 0 && num < NumMaps)){
                         //csak az ellenséget támadjuk, de egyszerre mindenkit
                         for (int enemy = 0; enemy <= players.length-1; enemy++){
-                            if ( players[enemy].getBoard().getOcean()[abc][num].equals(display[1]) && (me != enemy) ) {
+                            if ( getPlayerOcean(players, enemy)[abc][num].equals(display[1]) && (me != enemy) ) {
                                 System.out.println(players[enemy].getName()+": Bumm! Elsüllyesztetted a hajót!");
-                                players[enemy].getBoard().getOcean()[abc][num] = display[3];
+                                getPlayerOcean(players, enemy)[abc][num] = display[3];
                                 players[me].getBoard().getShut()[abc][num] = display[2];
                                 // Az ucsó hajot töröljük
                                 players[enemy].getShips().remove(players[enemy].getShips().size()-1);
@@ -146,42 +145,29 @@ public class Display{
         int value = 0;
         while (value < minimum){
             System.out.println(question);
+            System.out.println(value);
             value = input.addNumber();
         }
         return value;
     }
-    //Kérdés és karakter érték adása
-    abc = input.addCharacter()-1;
-    public int HowMach(String question, int minimum){
-        int value = 0;
-        while (value < minimum){
-            System.out.println(question);
-            value = input.addNumber();
-        }
-        return value;
-    }
+
     public void PrintPlayersBoard(Player[] players, String mapname){
         for (int i = 0; i <= players.length-1; i++){
-            System.out.print(" "+players[i].getName()+String.format("%"+(2+(extracted(players, i).length*2)-players[i].getName().length())+"s", " "));
+            System.out.print(" "+players[i].getName()+String.format("%"+(2+(getPlayerOcean(players, i).length*2)-players[i].getName().length())+"s", " "));
         }
         System.out.println();
         for (int i = 0; i <= players.length-1; i++){
             System.out.print("   ");
-            for(int num = 1; num <= extracted(players, i).length; num++) System.out.print(num+" ");
+            for(int num = 1; num <= getPlayerOcean(players, i).length; num++) System.out.print(num+" ");
         }
         //ABC és 0-ák kiírása
         System.out.println();
-        for(int abc = 0; abc < players[0].getBoard().getOcean().length; abc++) {
+        for(int abc = 0; abc < getPlayerOcean(players, 0).length; abc++) {
             for (int i = 0; i <= players.length-1; i++){
                 System.out.print(" "+(char)(65+abc)+" ");
-                for (int num = 0; num < extracted(players, i).length; num++){
-                    /*Square s = new Square();
-                    players[i].getBoard().getOcean()[abc][num] = s.setValue(display[0]);
-                    System.out.print(players[i].getBoard().getOcean()[abc][num]);*/
-                    //display[0];
-
+                for (int num = 0; num < getPlayerOcean(players, i).length; num++){
                     if(mapname=="ocean"){
-                        if (players[i].getBoard().getOcean()[abc][num] == null) players[i].getBoard().getOcean()[abc][num] = display[0];
+                        if (getPlayerOcean(players, i)[abc][num] == null) getPlayerOcean(players, i)[abc][num] = display[0];
                         System.out.print(players[i].getBoard().getOcean()[abc][num]);
                     }else{
                         if (players[i].getBoard().getShut()[abc][num] == null) players[i].getBoard().getShut()[abc][num] = display[0];
@@ -192,10 +178,9 @@ public class Display{
             System.out.println();
         }
     }
-    private String[][] extracted(Player[] players, int i) {
+    private String[][] getPlayerOcean(Player[] players, int i) {
         return players[i].getBoard().getOcean();
     }
-
 }
 //játék kimenetelének a megjelenítése
 

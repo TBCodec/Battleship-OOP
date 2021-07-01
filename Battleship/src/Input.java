@@ -2,17 +2,10 @@ import java.util.Scanner;
 
 public class Input{
     Scanner input = new Scanner(System.in);
-
     public int addNumber(){
-        int yourNumber;
-        String i = input.nextLine();
-
-        try {
-            yourNumber = Integer.valueOf(i);
-        } catch (NumberFormatException ex) {
-            yourNumber = 0;
-
-        }
+        int yourNumber = 0;
+        if(input.hasNextInt())  yourNumber = input.nextInt();
+        else yourNumber =0;
         return yourNumber;
     }
     public int addCharacter(){
