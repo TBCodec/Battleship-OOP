@@ -145,7 +145,6 @@ public class Display extends Player{
         int value = 0;
         while (value < minimum){
             System.out.println(question);
-            System.out.println(value);
             value = input.addNumber();
         }
         return value;
