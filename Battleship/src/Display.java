@@ -141,7 +141,17 @@ public class Display{
         if(haveWinner) System.out.println(winner.getName()+" a győztes!");
         else System.out.println("Dönetlen az eredmény!");
     }
-    //itt kérdezi meg, hogy mennyi legyen a játékosok száma, illetve, hogy a térkép mekkora legyen (min
+    //Kérdés és minimum szám érték adása
+    public int HowMach(String question, int minimum){
+        int value = 0;
+        while (value < minimum){
+            System.out.println(question);
+            value = input.addNumber();
+        }
+        return value;
+    }
+    //Kérdés és karakter érték adása
+    abc = input.addCharacter()-1;
     public int HowMach(String question, int minimum){
         int value = 0;
         while (value < minimum){
