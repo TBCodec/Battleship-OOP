@@ -1,6 +1,7 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 
-public class Display extends Player{
+public class Display{
 
     /* 0 (üres terület), X (hajo), H (találat), S (elsüllyedt), M (mellé) */
     private static String[] display = {"0 ", "X ", "H ", "S ", "M "};
@@ -40,10 +41,8 @@ public class Display extends Player{
     //Új játék indítása képernyő
     public void StartGame(){
         //Játékosok létrehozása! Hányan játszotok? Milyen széles legyen a pálya?
-        super.CreatPlayer(
-            HowMach("Hányan szertnétek játszani? Minimum 2 játékos kell!", 2),
-            HowMach("Mekkora legyen a pálya? (Minimum 5-ös)", 5)
-            );
+        battleship.CreatPlayer(HowMach("Hányan szertnétek játszani? Minimum 2 játékos kell!", 2),
+        HowMach("Mekkora legyen a pálya? (Minimum 5-ös)", 5));
         //Rajzolunk
         PrintPlayersBoard(battleship.getPlayers(), "ocean");
         //Hajók lerakása az összes játékos lerakja a hajóit
