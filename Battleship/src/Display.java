@@ -1,13 +1,9 @@
-import java.util.Arrays;
-import java.util.InputMismatchException;
-
 public class Display{
 
     /* 0 (üres terület), X (hajo), H (találat), S (elsüllyedt), M (mellé) */
     private static String[] display = {"0 ", "X ", "H ", "S ", "M "};
     private Input input = new Input();
-    //private Player player = new Player();
-    Battleship battleship = new Battleship();
+    Player player = new Player();
 
     //Játék Start képernyóje
     public void StartScreen(){
@@ -26,7 +22,7 @@ public class Display{
                 break;
             case 2:
                 try {
-                    ToplistScreen(battleship.getPlayers());
+                    ToplistScreen(player.getPlayers());
                 }
                 catch (NullPointerException e){
                     System.out.println("Még nincs toplista!");
@@ -41,16 +37,16 @@ public class Display{
     //Új játék indítása képernyő
     public void StartGame(){
         //Játékosok létrehozása! Hányan játszotok? Milyen széles legyen a pálya?
-        battleship.CreatPlayer(HowMach("Hányan szertnétek játszani? Minimum 2 játékos kell!", 2),
+        player.CreatPlayer(HowMach("Hányan szertnétek játszani? Minimum 2 játékos kell!", 2),
         HowMach("Mekkora legyen a pálya? (Minimum 5-ös)", 5));
         //Rajzolunk
-        PrintPlayersBoard(battleship.getPlayers(), "ocean");
+        PrintPlayersBoard(player.getPlayers(), "ocean");
         //Hajók lerakása az összes játékos lerakja a hajóit
-        InstallShipsScreen(battleship.getPlayers());
+        InstallShipsScreen(player.getPlayers());
         //Csata
-        BattleShipsScreen(battleship.getPlayers());
+        BattleShipsScreen(player.getPlayers());
         //End game toplisat kiírása
-        ToplistScreen(battleship.getPlayers());
+        ToplistScreen(player.getPlayers());
     }
     //Hajók elrendezáse
     public void InstallShipsScreen(Player[] players){
